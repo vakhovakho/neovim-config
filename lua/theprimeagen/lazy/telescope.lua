@@ -11,7 +11,12 @@ return {
         require('telescope').setup({})
 
         local builtin = require('telescope.builtin')
-        vim.keymap.set('n', '<leader>pf', builtin.find_files, {})
+        vim.keymap.set('n', '<leader>pf', function()
+            builtin.find_files({
+                no_ignore = true, -- include ignored files
+                hidden = true, -- also include hidden files
+            })
+        end, {})
         vim.keymap.set('n', '<leader>po', builtin.oldfiles, {})
         vim.keymap.set('n', '<C-p>', builtin.git_files, {})
         vim.keymap.set('n', '<leader>pws', function()
@@ -28,4 +33,3 @@ return {
         vim.keymap.set('n', '<leader>vh', builtin.help_tags, {})
     end
 }
-
