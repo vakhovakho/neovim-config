@@ -1,6 +1,6 @@
 return {
     "laytan/cloak.nvim",
-    config = function() 
+    config = function()
         require("cloak").setup({
             enabled = true,
             cloak_character = "*",
@@ -22,5 +22,7 @@ return {
                 },
             },
         })
+        vim.keymap.set("n", "<leader>cp", ":CloakPreviewLine<CR>", { noremap = true, silent = true })
+        vim.keymap.set("n", "<leader>cd", ":CloakDisable<CR>", { noremap = true, silent = true })
     end
 }
